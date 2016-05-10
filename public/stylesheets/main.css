@@ -34,3 +34,12 @@ select {
 .btn-day {
   background-color: #A7C6FB;
   border: 1px solid #ECE8DF; }
+
+.btn .glyphicon {
+  font-size: 1.8em;
+  padding: 0; }
+
+.btn.btn-sm {
+  padding: 4px;
+  padding-bottom: 2.8px;
+  border: 0; }
