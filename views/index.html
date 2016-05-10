@@ -2,65 +2,89 @@
 
 {% block content %}
   
-  <div class="row page-header">
-    <div class="col-md-12">
-    <h1>Welcome</h1>
-    </div>
+<div class="row page-header">
+  <div class="col-md-12">
+  <h1>Welcome</h1>
   </div>
+</div>
 
-  <div class="row">
-      <div class="col-md-3">
-      <p>Day {{day}}</p>
-      <br>
-        <form action="/" method="GET">
-          <label for="name_field">Activity 1</label>
-          <input name="name" type="text" id="name_field" value="{{ username }}"/>
+<div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-title">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary btn-day" autofocus="true">Day 1</button>
+            <button type="button" class="btn btn-primary btn-day">Day 2</button>
+            <button type="button" class="btn btn-primary btn-day">Day 3</button>
+          </div>
+        </div>
+        <div class="panel-body">  
           <br>
-          <label for="text_field">Activity 2</label>
-          <input name="text" type="text" id="text_field" />
+            <form action="/" method="GET">
+              <label for="name_field">Activity 1</label>
+              <input name="name" type="text" id="name_field" value="{{ username }}"/>
+              <label for="text_field">Activity 2</label>
+              <input name="text" type="text" id="text_field" />
+            </form>
+        </div>
+      </div>
+    </div>
+ <div class="col-md-9">
+
+    <div class="row">
+      <div class="col-md-12" id="map"></div>
+    </div>
+
+    <div class="row">
+
+      <div class="selectors col-md-4" id="hotel">
+        <form action="/" method="POST">
+         <label for="hotel">Hotel</label>
+            <select name="hotel" class="form-control">
+              {% for hotel in hotels %}
+              <option value="{{hotel.name}}">{{hotel.name}}</option>
+              {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary btn-sm"> 
+              <span class="glyphicon glyphicon-play-circle"></span> 
+            </button>
         </form>
+      </div>
+
+      <div class="selectors col-md-4" id="restaurant">
+        <form action="/" method="POST">
+          <label for="restaurant">Restaurant</label>
+         
+            <select name="restaurant" class="form-control">
+              {% for restaurant in restaurants %}
+              <option value="{{restaurant.name}}">{{restaurant.name}}</option>
+              {% endfor %}
+            </select>
+            
+            <button type="submit" class="btn btn-primary btn-sm"> 
+              <span class="glyphicon glyphicon-play-circle"></span> 
+            </button>
+        </form>
+      </div>
+
+      <div class="selectors col-md-4" id="activity">
+        <form action="/" method="POST">
+          <label for="activity">Activity</label>
+            <select class="form-control" name="activity" >
+              {% for activity in activities %}
+              <option value="{{activity.name}}">{{activity.name}}</option>
+              {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary btn-sm"> 
+            <span class="glyphicon glyphicon-play-circle"></span> 
+            </button>
+        </form>
+      </div>
 
     </div>
-      <div class="col-md-9">
-        <div class="row">
-          <p>This is the map</p>
-          <div class="col-md-12" id="map"></div>
-        </div>
-      <div class="row">
-        <div class="selectors col-md-4" id="hotel">
-
-          <form action="/" method="POST">
-            <select name="hotel">
-            {% for hotel in hotels %}
-              <option value="{{hotel.name}}">{{hotel.name}}</option>
-            {% endfor %}
-            </select>
-           <input name="hotel" type="submit" id="hotel_select"/>
-          </form>
-        </div>
-        <div class="selectors col-md-4" id="restaurant">
-          <form action="/" method="POST">
-          <select name="restaurant">
-          {% for restaurant in restaurants %}
-            <option value="{{restaurant.name}}">{{restaurant.name}}</option>
-          {% endfor %}
-          </select>
-           <input name="hotel" type="submit" id="hotel_select"/>
-          </form>
-        </div>
-        <div class="selectors col-md-4" id="activity">
-          <form action="/" method="POST">
-          <select name="activity">
-          {% for activity in activities %}
-            <option value="{{activity.name}}">{{activity.name}}</option>
-          {% endfor %}
-          </select>
-           <input name="hotel" type="submit" id="hotel_select"/>
-          </form>
-        </div>
-      </div>
-      </div>
-  </div>
+    
+    </div>
+</div>
 
 
 {% endblock %}

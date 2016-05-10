@@ -1,5 +1,5 @@
 body {
-  color: #000000; 
+  background-color: rgb(255, 255, 240); 
 }
 
 @mixin clearfix() {
@@ -18,10 +18,33 @@ body {
 }
 
 select {
-	width: 100%;
-	height: auto;
+	width: 50%;
 }
 
-@for $i from 1 through 12 {
-    .col-md-#{$i} {border: 1px solid black;}
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand, .navbar-fixed-top, .navbar-inverse .navbar-nav > li.active {
+    background-color: rgb(70, 130, 180);
+    color: #333;
+}
+
+.panel-default {
+	text-align: center;
+	padding-top: 15px;
+	height: 80vh;
+	width: 100%;
+	background-color: #ECE8DF;
+	margin: 0;
+}
+
+.selectors {
+	height: 10vh;
+}
+
+.row .col-md-3 {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.btn-day {
+	background-color: #A7C6FB;
+	border: 1px solid #ECE8DF;
 }

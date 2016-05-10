@@ -1,5 +1,5 @@
 body {
-  color: #000000; }
+  background-color: ivory; }
 
 .page-header::before, .page-header::after {
   content: "";
@@ -10,41 +10,27 @@ body {
   height: 70vh; }
 
 select {
+  width: 50%; }
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand, .navbar-fixed-top, .navbar-inverse .navbar-nav > li.active {
+  background-color: steelblue;
+  color: #333; }
+
+.panel-default {
+  text-align: center;
+  padding-top: 15px;
+  height: 80vh;
   width: 100%;
-  height: auto; }
+  background-color: #ECE8DF;
+  margin: 0; }
 
-.col-md-1 {
-  border: 1px solid black; }
+.selectors {
+  height: 10vh; }
 
-.col-md-2 {
-  border: 1px solid black; }
+.row .col-md-3 {
+  padding-left: 5px;
+  padding-right: 5px; }
 
-.col-md-3 {
-  border: 1px solid black; }
-
-.col-md-4 {
-  border: 1px solid black; }
-
-.col-md-5 {
-  border: 1px solid black; }
-
-.col-md-6 {
-  border: 1px solid black; }
-
-.col-md-7 {
-  border: 1px solid black; }
-
-.col-md-8 {
-  border: 1px solid black; }
-
-.col-md-9 {
-  border: 1px solid black; }
-
-.col-md-10 {
-  border: 1px solid black; }
-
-.col-md-11 {
-  border: 1px solid black; }
-
-.col-md-12 {
-  border: 1px solid black; }
+.btn-day {
+  background-color: #A7C6FB;
+  border: 1px solid #ECE8DF; }
