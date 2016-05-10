@@ -37,7 +37,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Twitter.js</a>
+            <a class="navbar-brand" href="/">Trip Planner</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -61,14 +61,14 @@
 
       <!-- Begin page content -->
       <div class="container">
-        {% block content %}Welcome to Twitter.js{% endblock %}
+        {% block content %}{% endblock %}
       </div> <!-- end container -->
 
     </div>
 
     <div id="footer">
       <div class="container">
-        <p class="text-muted">Twitter.js, Fullstack Academy</p>
+        <p class="text-muted">TripPlanner, Fullstack Academy</p>
       </div>
     </div>
 
@@ -78,22 +78,22 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
     <script>
       // Load the socket.io library above, then connect to the server.
       // Because the socket.io server is being run on the same server as your
       // Express instance, you can connect() without any arguments.
-      var socket = io.connect();
-      socket.on('connect', function(){
-        console.log('connected to server via WebSockets!');
-      });
+      // var socket = io.connect();
+      // socket.on('connect', function(){
+      //   console.log('connected to server via WebSockets!');
+      // });
       // best practice with jQuery: find selection once, not every time a func runs
-      var $tweets = $('#tweets');
-      // When 'new_tweet' events are fired, do something with the packaged tweet
-      socket.on('new_tweet', function (tweet) {
-        console.log(tweet);
-        $tweets.append('<div class="tweetbox"><img><div class="content"><p class="by"><a href="/users/' + tweet.name + '">' + tweet.name + '</a></p><p><a href="/tweets/' + tweet.id + '">' + tweet.text + '</a></p></div></div>');
-      });
+      // var $tweets = $('#tweets');
+      // // When 'new_tweet' events are fired, do something with the packaged tweet
+      // socket.on('new_tweet', function (tweet) {
+      //   console.log(tweet);
+      //   $tweets.append('<div class="tweetbox"><img><div class="content"><p class="by"><a href="/users/' + tweet.name + '">' + tweet.name + '</a></p><p><a href="/tweets/' + tweet.id + '">' + tweet.text + '</a></p></div></div>');
+      // });
     </script>
   </body>
 </html>

@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, './public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/', require('./routes'));
+//app.use('/', require('./routes'));
 
 
 
@@ -28,12 +28,20 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+// app.get('/', function(req, res, next) {
+// 	res.render('error', {
+// 	  	message: 'Cannot find page',
+// 	  	error: err
+// 	  });
+// })
+
 // handle all errors (anything passed into `next()`)
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   console.error(err);
   res.render('error', {
-  	error: err.status
+  	message: 'Cannot find page',
+  	error: err
   });
 });
 
