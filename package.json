@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.3.5",
     "bower": "^1.7.9",
     "pg": "^4.5.5",
     "pg-hstore": "^2.3.2",

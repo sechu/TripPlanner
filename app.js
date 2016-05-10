@@ -4,8 +4,8 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var swig = require('swig');
 var path = require('path');
-var model = require('./models');
-
+var models = require('./models');
+var $promise = require('bluebird');
 
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'html');
@@ -19,7 +19,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //app.use('/', require('./routes'));
-
 
 
 app.use(function(req, res, next) {
@@ -45,6 +44,17 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var server = app.listen(3001, function() {
-	console.log('server is listening on port 3001');
-});
+
+$promise.all([
+	models.Place.sync({force: true}),
+	models.Activity.sync({force: true}),
+	models.Hotel.sync({force: true}),
+	models.Restaurant.sync({force: true})
+])
+.then(function() {
+	app.listen(3001, function() {
+		console.log('server is listening on port 3001');
+	});
+})
+.catch(console.error);
+
