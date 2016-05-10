@@ -1,5 +1,14 @@
 var Sequelize = require('sequelize');
 var db = new Sequelize('postgres://localhost:5432/tripplanner', {logging: false});
+// var Place = require('./place');
+// var Hotel = require('./hotel');
+// var Restaurant = require('./restaurant');
+// var Activity = require('./activity');
+// // var $promise = require('bluebird').Promise;
+
+
+
+// module.exports = db;
 
 var Place = db.define('place', {
 		address: {
@@ -34,7 +43,7 @@ var Hotel = db.define('hotel', {
 		validate: {min: 1, max: 5}
 	}, 
 	amenities: {
-		type: Sequelize.ARRAY(Sequelize.STRING)
+		type: Sequelize.STRING
 	}
 });
 
@@ -44,10 +53,10 @@ var Activity = db.define('activity', {
 		allowNull: false
 	},
 	age_range: {
-		type: Sequelize.STRING,
-		validate: {
-			is: /[0-9]+\-[0-9]+/
-		}
+		type: Sequelize.STRING
+		// validate: {
+		// 	is: /[0-9]+\-[0-9]+/
+		// }
 	}
 });
 
@@ -58,7 +67,7 @@ var Restaurant = db.define('restaurant', {
 		allowNull: false
 	},
 	cuisine: {
-		type: Sequelize.ARRAY(Sequelize.STRING)
+		type: Sequelize.STRING
 	},
 	price: {
 		type: Sequelize.INTEGER,
@@ -73,6 +82,7 @@ Activity.belongsTo(Place);
 
 
 module.exports = {
+	db: db,
 	Place: Place,
 	Hotel: Hotel,
 	Activity: Activity,
@@ -80,32 +90,32 @@ module.exports = {
 };
 
 
-// , {
-	// 	getterMethods: {
-	// 		route: function() { return '/wiki/'+this.urlTitle },
-	// 		renderedContent: function() {
-	// 			var doubleBrackets = /\[\[(.*?)\]\]/g;
-	// 			var rendered = this.content.replace(doubleBrackets, replacer);
-	// 			function replacer(match, text) {
-	// 				return '<a href="/wiki/'+urlGenerator(text)+'">'+text+'</a>';
-	// 			}
-	// 			return marked(rendered, function (err, content) {
-	// 				return content;
-	// 			});
-	// 		}
-	// 	},
-	// 	classMethods: {
-	// 		findByTag: function(tag) {
-	// 			return Page.findAll({
-	// 				where: {
-	// 					tags: {
-	// 						$overlap: [tag]
-	// 					}
-	// 				}
-	// 			});
-	// 		}
-	// 	},
-	// 	instanceMethods: {
+// // , {
+// 	// 	getterMethods: {
+// 	// 		route: function() { return '/wiki/'+this.urlTitle },
+// 	// 		renderedContent: function() {
+// 	// 			var doubleBrackets = /\[\[(.*?)\]\]/g;
+// 	// 			var rendered = this.content.replace(doubleBrackets, replacer);
+// 	// 			function replacer(match, text) {
+// 	// 				return '<a href="/wiki/'+urlGenerator(text)+'">'+text+'</a>';
+// 	// 			}
+// 	// 			return marked(rendered, function (err, content) {
+// 	// 				return content;
+// 	// 			});
+// 	// 		}
+// 	// 	},
+// 	// 	classMethods: {
+// 	// 		findByTag: function(tag) {
+// 	// 			return Page.findAll({
+// 	// 				where: {
+// 	// 					tags: {
+// 	// 						$overlap: [tag]
+// 	// 					}
+// 	// 				}
+// 	// 			});
+// 	// 		}
+// 	// 	},
+// 	// 	instanceMethods: {
 	// 		findSimilar: function() {
 	// 			return Page.findAll({
 	// 				where: {
