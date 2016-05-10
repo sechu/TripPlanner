@@ -6,6 +6,10 @@ var swig = require('swig');
 var path = require('path');
 var models = require('./models').db;
 var $promise = require('bluebird').Promise;
+var Place = require('./models').Place;
+var Hotel = require('./models').Hotel;
+var Restaurant = require('./models').Restaurant;
+var Activity = require('./models').Activity;
 
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'html');
@@ -13,6 +17,8 @@ app.engine('html', swig.renderFile);
 swig.setDefaults({ cache: false });
 
 app.use(morgan('dev'));
+app.use('/bootstrap', express.static(path.join(__dirname, './node_modules/bootstrap/dist')));
+app.use('/jquery', express.static(path.join(__dirname, './node_modules/jquery/dist')));
 app.use(express.static(path.join(__dirname, './public')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,20 +26,31 @@ app.use(bodyParser.json());
 
 //app.use('/', require('./routes'));
 
+app.get('/', function(req, res, next) {
+	var obj = {};
+	$promise.each([Hotel, Restaurant, Activity], function(db) {
+		return db.findAll({}).then(function(result) {
+			obj[db.name] = result;
+		});
+	})
+	.then(function(result) {
+		res.render('index', {
+			day: 1,
+			hotels: obj.hotel,
+	        restaurants: obj.restaurant,
+	        activities: obj.activity
+		});
+	})
+	.catch(function(error) {
+		console.error(error);
+	})
+})
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-
-// app.get('/', function(req, res, next) {
-// 	res.render('error', {
-// 	  	message: 'Cannot find page',
-// 	  	error: err
-// 	  });
-// })
-
 // handle all errors (anything passed into `next()`)
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
@@ -45,14 +62,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-// models.Place.sync({force: true})
-// .then(function() {
-// 	return $promise.all([
-// 		models.Activity.sync({force: true}),
-// 		models.Hotel.sync({force: true}),
-// 		models.Restaurant.sync({force: true})
-// 	])
-// })
 models.sync({})
 .then(function() {
 	app.listen(3001, function() {

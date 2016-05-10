@@ -1,43 +1,67 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-  <div class="page-header">
-    <h1>Welcome to Twitter.js!</h1>
+  
+  <div class="row page-header">
+    <div class="col-md-12">
+    <h1>Welcome</h1>
+    </div>
   </div>
+
   <div class="row">
-    <div class="col-md-3">
-      <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
-      <b>Your Name</b><br>
-      100 followers
-      {% if showForm %}
-        <form action="/tweets" method="POST">
-          <label for="name_field">Name:</label>
+      <div class="col-md-3">
+      <p>Day {{day}}</p>
+      <br>
+        <form action="/" method="GET">
+          <label for="name_field">Activity 1</label>
           <input name="name" type="text" id="name_field" value="{{ username }}"/>
           <br>
-          <label for="text_field">Text:</label>
+          <label for="text_field">Activity 2</label>
           <input name="text" type="text" id="text_field" />
-          <br>
-          <input type="submit" value="Submit" />
         </form>
-      {% endif %}
-    </div>
-    <div class="col-md-9">
 
-      <!-- display tweets here -->
-      <div id="tweets">
-      {% for tweet in tweets %}
-        <div class="tweetbox">
-          <img src="{{tweet.pictureurl}}">
-          <div class="content">
-            <p class="by"><a href="/users/{{tweet.name}}">{{tweet.name}}</a></p>
-            <p><a href="/tweets/{{tweet.tweetid}}">{{tweet.content}}</a></p>
-          </div>
+    </div>
+      <div class="col-md-9">
+        <div class="row">
+          <p>This is the map</p>
+          <div class="col-md-12" id="map"></div>
         </div>
-      {% endfor %}
-      </div>
+      <div class="row">
+        <div class="selectors col-md-4" id="hotel">
 
-    </div>
+          <form action="/" method="POST">
+            <select name="hotel">
+            {% for hotel in hotels %}
+              <option value="{{hotel.name}}">{{hotel.name}}</option>
+            {% endfor %}
+            </select>
+           <input name="hotel" type="submit" id="hotel_select"/>
+          </form>
+        </div>
+        <div class="selectors col-md-4" id="restaurant">
+          <form action="/" method="POST">
+          <select name="restaurant">
+          {% for restaurant in restaurants %}
+            <option value="{{restaurant.name}}">{{restaurant.name}}</option>
+          {% endfor %}
+          </select>
+           <input name="hotel" type="submit" id="hotel_select"/>
+          </form>
+        </div>
+        <div class="selectors col-md-4" id="activity">
+          <form action="/" method="POST">
+          <select name="activity">
+          {% for activity in activities %}
+            <option value="{{activity.name}}">{{activity.name}}</option>
+          {% endfor %}
+          </select>
+           <input name="hotel" type="submit" id="hotel_select"/>
+          </form>
+        </div>
+      </div>
+      </div>
   </div>
 
+
 {% endblock %}
+
