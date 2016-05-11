@@ -56,7 +56,8 @@ label.control-label {
   display: block;
   margin-bottom: 0; }
 
-.selectedHotel {
-  text-align: left; }
-  .selectedHotel > button {
+.list-group-item .selected {
+  text-align: left;
+  height: 20px; }
+  .list-group-item .selected > button {
     float: right; }

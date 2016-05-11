@@ -74,11 +74,16 @@ label.control-label {
 	margin-bottom: 0;
 }
 
-.selectedHotel {
-	text-align: left;
-	> button {
-		float: right;
+.list-group-item {
+	.selected {
+		text-align: left;
+		height: 20px;
+
+		> button {
+			float: right;
+		}
 	}
 }
+	
 
 

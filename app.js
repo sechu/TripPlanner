@@ -34,8 +34,15 @@ app.get('/', function(req, res, next) {
 		});
 	})
 	.then(function(result) {
+		var hotels = obj.hotel;
+		var restaurants = obj.restaurant;
+		var activities = obj.activity;
+		var itinerary = {
+			rest: restaurants.slice(4, 7),
+			act: activities.slice(8, 11)
+		}
 		res.render('index', {
-			day: 1,
+			itinerary: itinerary,
 			hotels: obj.hotel,
 	        restaurants: obj.restaurant,
 	        activities: obj.activity

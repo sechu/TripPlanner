@@ -20,7 +20,7 @@ function initialize_gmaps() {
           scale: 5
         },
     });
-    // Add the marker to the map by calling setMap()
+
     marker.setMap(map);
 }
 

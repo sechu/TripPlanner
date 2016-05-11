@@ -19,30 +19,42 @@
           </div>
         </div>
         <div class="panel-body">  
-          <br>
           <div class="form-group">
             <form action="/" method="GET">
-            <label for="hotel" class="control-label">Hotel</label>
+            <label for="hotel" class="control-label">My Hotel</label>
               <ul class="list-group">
                 <li class="list-group-item">
-                    <div class="selectedHotel">
-                    {{hotels[3].name}}
-                    <button type="submit" class="btn btn-primary btn-sm"> 
-                      <span class="glyphicon glyphicon-remove-circle"></span>
-                    </button>
+                    <div class="selected">
+                    {{hotels[5].name}}
+                    <button class="close">&times;</button>
                     </div>
                 </li>
-                <li class="list-group-item">{{hotels[2].name}}
-                    <button type="submit" class="btn btn-primary btn-sm"> 
-                      <span class="glyphicon glyphicon-remove-circle"></span>
-                    </button>
-                </li>
-                <li class="list-group-item">{{hotels[5].name}}
-                    <button type="submit" class="btn btn-primary btn-sm"> 
-                      <span class="glyphicon glyphicon-remove-circle"></span>
-                    </button>
-                </li>
               </ul>
+
+              <label for="restaurants" class="control-label">My Restaurants</label>
+              <ul class="list-group">
+                {% for restaurant in itinerary.rest %}
+                <li class="list-group-item">
+                    <div class="selected">
+                    {{restaurant.name}}
+                    <button class="close">&times;</button>
+                    </div>
+                </li>
+                {% endfor %}
+              </ul>
+
+              <label for="hotel" class="control-label">My Activities</label>
+              <ul class="list-group">
+                {% for activity in itinerary.act %}
+                <li class="list-group-item">
+                    <div class="selected">
+                    {{activity.name}}
+                    <button class="close">&times;</button>
+                    </div>
+                </li>
+                {% endfor %}
+              </ul>
+
             </form>
           </div>
         </div>
