@@ -39,7 +39,7 @@
 
       <div class="selectors col-md-4" id="hotel">
         <form action="/" method="POST">
-         <label for="hotel">Hotel</label>
+         <label for="hotel" class="control-label">Hotel</label>
             <select name="hotel" class="form-control">
               {% for hotel in hotels %}
               <option value="{{hotel.name}}">{{hotel.name}}</option>
@@ -53,14 +53,13 @@
 
       <div class="selectors col-md-4" id="restaurant">
         <form action="/" method="POST">
-          <label for="restaurant">Restaurant</label>
-         
+          <label for="restaurant" class="control-label">Restaurant</label>
             <select name="restaurant" class="form-control">
               {% for restaurant in restaurants %}
               <option value="{{restaurant.name}}">{{restaurant.name}}</option>
               {% endfor %}
             </select>
-            
+           
             <button type="submit" class="btn btn-primary btn-sm"> 
               <span class="glyphicon glyphicon-play-circle"></span> 
             </button>
@@ -69,7 +68,7 @@
 
       <div class="selectors col-md-4" id="activity">
         <form action="/" method="POST">
-          <label for="activity">Activity</label>
+          <label for="activity" class="control-label">Activity</label>
             <select class="form-control" name="activity" >
               {% for activity in activities %}
               <option value="{{activity.name}}">{{activity.name}}</option>

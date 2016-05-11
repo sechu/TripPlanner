@@ -40,6 +40,18 @@ select {
   padding: 0; }
 
 .btn.btn-sm {
+  background-color: steelblue;
+  color: black;
   padding: 4px;
   padding-bottom: 2.8px;
   border: 0; }
+
+.form-control {
+  display: inline-block;
+  width: 85%;
+  height: 32px; }
+
+label.control-label {
+  padding-top: 20px;
+  display: block;
+  margin-bottom: 0; }
