@@ -1,18 +1,40 @@
 var express = require('express');
 var router = express.Router();
 
-var models = require('../models');
-var Page = models.Page;
-var User = models.User;
-var chalk = require('chalk');
+var models = require('./models').db;
+var $promise = require('bluebird').Promise;
+var Place = require('./models').Place;
+var Hotel = require('./models').Hotel;
+var Restaurant = require('./models').Restaurant;
+var Activity = require('./models').Activity;
+
 
 
 router.get('/', function(req, res, next) {
-	Page.findAll({}).then(function(pages) {
-		res.render('index', {
-			pages: pages
+	var obj = {};
+	$promise.each([Hotel, Restaurant, Activity], function(db) {
+		return db.findAll({}).then(function(result) {
+			obj[db.name] = result;
 		});
-	});
+	})
+	.then(function(result) {
+		var hotels = obj.hotel;
+		var restaurants = obj.restaurant;
+		var activities = obj.activity;
+		var itinerary = {
+			rest: restaurants.slice(4, 7),
+			act: activities.slice(8, 11)
+		}
+		res.render('index', {
+			itinerary: itinerary,
+			hotels: obj.hotel,
+	        restaurants: obj.restaurant,
+	        activities: obj.activity
+		});
+	})
+	.catch(function(error) {
+		console.error(error);
+	})
 })
 
 router.post('/', function(req, res, next) {
@@ -109,7 +131,6 @@ router.get('/:urlTitle/:action', function(req, res, next) {
 	})
 	.catch(next);
 })
-
 
 
 module.exports = router;
