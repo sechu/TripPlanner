@@ -20,12 +20,31 @@
         </div>
         <div class="panel-body">  
           <br>
+          <div class="form-group">
             <form action="/" method="GET">
-              <label for="name_field">Activity 1</label>
-              <input name="name" type="text" id="name_field" value="{{ username }}"/>
-              <label for="text_field">Activity 2</label>
-              <input name="text" type="text" id="text_field" />
+            <label for="hotel" class="control-label">Hotel</label>
+              <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="selectedHotel">
+                    {{hotels[3].name}}
+                    <button type="submit" class="btn btn-primary btn-sm"> 
+                      <span class="glyphicon glyphicon-remove-circle"></span>
+                    </button>
+                    </div>
+                </li>
+                <li class="list-group-item">{{hotels[2].name}}
+                    <button type="submit" class="btn btn-primary btn-sm"> 
+                      <span class="glyphicon glyphicon-remove-circle"></span>
+                    </button>
+                </li>
+                <li class="list-group-item">{{hotels[5].name}}
+                    <button type="submit" class="btn btn-primary btn-sm"> 
+                      <span class="glyphicon glyphicon-remove-circle"></span>
+                    </button>
+                </li>
+              </ul>
             </form>
+          </div>
         </div>
       </div>
     </div>

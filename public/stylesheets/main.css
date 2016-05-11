@@ -48,10 +48,15 @@ select {
 
 .form-control {
   display: inline-block;
-  width: 85%;
+  width: 80%;
   height: 32px; }
 
 label.control-label {
   padding-top: 20px;
   display: block;
   margin-bottom: 0; }
+
+.selectedHotel {
+  text-align: left; }
+  .selectedHotel > button {
+    float: right; }
